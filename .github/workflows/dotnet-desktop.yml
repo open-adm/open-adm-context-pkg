@@ -19,12 +19,14 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release
+      - name: Test
+        run: dotnet test
       - name: Calculate version
         id: calculate_version
         run: echo "VERSION=$(($(git rev-list --count HEAD) + 1))" >> $GITHUB_ENV
       - name: Create pkg
         run: dotnet pack -p:PackageVersion=1.0.${{ env.VERSION }}
-        working-directory: ./application-pkg
+        working-directory: ./context-pkg
       - name: Archive Nuget
         uses: actions/upload-artifact@v3
         with:
