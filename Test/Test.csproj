@@ -25,11 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Builder\" />
-    <Folder Include="Test\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\context-pkg\context-pkg.csproj" />
   </ItemGroup>
 
