@@ -5,7 +5,7 @@
     <RootNamespace>context_pkg</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Company>Open adm</Company>
     <Authors>Bruno Bento Gonçalves</Authors>
   </PropertyGroup>
