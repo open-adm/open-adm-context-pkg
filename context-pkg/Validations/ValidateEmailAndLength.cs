@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using application_pkg.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace pkg_context.Validations;
 
@@ -10,6 +11,6 @@ public static class ValidateEmailAndLength
 
         if (!Regex.IsMatch(email,
                     @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))) throw new ArgumentException(messageError);
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))) throw new ExceptionCustom(messageError);
     }
 }

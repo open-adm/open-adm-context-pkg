@@ -1,17 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using application_pkg.Exceptions;
+using context_pkg.Factories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using pkg_context.Context;
 using pkg_context.Cryptography;
 
-namespace pkg_context.Factories;
+namespace context_pkg.Factories.Factorie;
 
-public static class ContextFactory
+public class ContextFactory : IContextFactory
 {
-    public static ClientContext CreateContextClient(byte[] stringConnectionByte)
+    public ClientContext CreateContextClient(byte[] stringConnectionByte)
     {
         var stringConnection = CryptographyDb.DecryptString(stringConnectionByte);
 
         if (string.IsNullOrWhiteSpace(stringConnection))
-            throw new Exception("String de conexão inválida para criação do contexto do cliente!");
+            throw new ExceptionCustom("String de conexão inválida para criação do contexto do cliente!");
 
         var optionsBuilderClient = new DbContextOptionsBuilder<ClientContext>();
 

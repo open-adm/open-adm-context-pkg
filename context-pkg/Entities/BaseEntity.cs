@@ -1,9 +1,12 @@
-﻿namespace pkg_context.Entities;
+﻿using application_pkg.Exceptions;
+
+namespace pkg_context.Entities;
 
 public abstract class BaseEntity
 {
     protected BaseEntity(int number)
     {
+        if (number <= 0) throw new ExceptionCustom("Número inválido para a entidade!");
         Number = number;
         Created_at = DateTime.Now;
         Update_at = DateTime.Now;

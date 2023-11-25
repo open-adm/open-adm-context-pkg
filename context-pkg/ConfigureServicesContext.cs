@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using context_pkg.Factories.Factorie;
+using context_pkg.Factories.Interfaces;
+using context_pkg.Services;
+using context_pkg.Strategy.Interfaces;
+using context_pkg.Strategy.Strategies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using pkg_context.Context;
-using pkg_context.Factories;
 using pkg_context.Repositories.Cached;
 using pkg_context.Repositories.Interfaces;
 using pkg_context.Repositories.Repository;
@@ -14,7 +18,10 @@ public static class ConfigureServicesContext
     public static IServiceCollection Inject(IServiceCollection services)
     {
         services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-        services.AddScoped<IFactory, Factory>();
+        services.AddScoped<IContextFactory, ContextFactory>();
+        services.AddScoped<IContextClientStrategy, ContextClientStrategy>();
+        services.AddScoped<ContextClientByClientKeyService>();
+        services.AddScoped<ContextClientByPathService>();
         services.AddScoped<PartnerRepository>();
         services.AddScoped<IPartnerRepository, CachedPartner>();
 
