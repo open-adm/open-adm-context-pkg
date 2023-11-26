@@ -1,7 +1,10 @@
-﻿namespace pkg_context.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace pkg_context.Entities;
 
 public sealed class Sidebar
 {
+    [JsonConstructor]
     public Sidebar(string? route, string title, string? icon, int order)
     {
         Id = Guid.NewGuid();

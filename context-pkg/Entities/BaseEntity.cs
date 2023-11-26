@@ -1,9 +1,11 @@
 ﻿using application_pkg.Exceptions;
+using System.Text.Json.Serialization;
 
 namespace pkg_context.Entities;
 
 public abstract class BaseEntity
 {
+    [JsonConstructor]
     protected BaseEntity(int number)
     {
         if (number <= 0) throw new ExceptionCustom("Número inválido para a entidade!");

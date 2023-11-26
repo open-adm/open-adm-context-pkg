@@ -1,9 +1,11 @@
 ﻿using pkg_context.Validations;
+using System.Text.Json.Serialization;
 
 namespace pkg_context.Entities;
 
 public sealed class UserGroup : BaseEntity
 {
+    [JsonConstructor]
     public UserGroup(int? quantityMaxUser, string description, int number) : base(number)
     {
         ValidateStringAndLength.Validate(description, 255, "Informe a descrição!");

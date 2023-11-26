@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace pkg_context.Entities;
 
 public sealed class Address : BaseEntity
 {
+    [JsonConstructor]
     public Address(string zipCode, string state, string city, string neighborhood, string road, int number) : base(number)
     {
         ZipCode = zipCode;

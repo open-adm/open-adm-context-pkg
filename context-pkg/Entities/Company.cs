@@ -1,4 +1,6 @@
-﻿namespace pkg_context.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace pkg_context.Entities;
 
 public sealed class Company : BaseEntity
 {
@@ -6,6 +8,7 @@ public sealed class Company : BaseEntity
     {
         AddressId = addressId;
     }
+    [JsonConstructor]
     public Company(string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, int number) : base(number)
     {
         RazaoSocial = razaoSocial;

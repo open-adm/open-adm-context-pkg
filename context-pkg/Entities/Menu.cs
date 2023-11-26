@@ -1,7 +1,10 @@
-﻿namespace pkg_context.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace pkg_context.Entities;
 
 public sealed class Menu
 {
+    [JsonConstructor]
     public Menu(bool isPremium)
     {
         Id = Guid.NewGuid();
