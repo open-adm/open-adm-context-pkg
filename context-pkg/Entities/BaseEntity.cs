@@ -13,6 +13,7 @@ public abstract class BaseEntity
         Created_at = DateTime.Now;
         Update_at = DateTime.Now;
         Active = true;
+        Id = Guid.NewGuid();
     }
 
     public Guid Id { get; protected set; }
