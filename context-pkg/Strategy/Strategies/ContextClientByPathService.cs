@@ -1,13 +1,13 @@
 ﻿using application_pkg.Exceptions;
 using context_pkg.Factories.Interfaces;
-using context_pkg.Interfaces;
+using context_pkg.Strategy.Interfaces;
 using Microsoft.AspNetCore.Http;
 using pkg_context.Context;
 using pkg_context.Repositories.Interfaces;
 
-namespace context_pkg.Services;
+namespace context_pkg.Strategy.Strategies;
 
-public class ContextClientByPathService : IContextClientService
+public class ContextClientByPathService : IClientStrategy
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IPartnerRepository _partnerRepository;

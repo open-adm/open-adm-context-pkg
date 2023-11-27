@@ -1,8 +1,8 @@
 ﻿using pkg_context.Context;
 
-namespace context_pkg.Interfaces;
+namespace context_pkg.Strategy.Interfaces;
 
-public interface IContextClientService
+public interface IClientStrategy
 {
     Task<ClientContext> CreateContextClient();
 }

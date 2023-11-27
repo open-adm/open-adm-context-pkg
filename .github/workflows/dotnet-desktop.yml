@@ -22,7 +22,7 @@ jobs:
       - name: Test
         run: dotnet test
       - name: Create pkg
-        run: dotnet pack -p:PackageVersion=1.0.6
+        run: dotnet pack -p:PackageVersion=1.0.7
         working-directory: ./context-pkg
       - name: Archive Nuget
         uses: actions/upload-artifact@v3
