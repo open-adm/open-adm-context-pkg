@@ -1,4 +1,4 @@
-﻿using application_pkg.Exceptions;
+﻿using context_pkg.Exceptions;
 
 namespace Test.Test.Entities;
 
