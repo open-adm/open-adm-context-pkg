@@ -1,4 +1,4 @@
-﻿using application_pkg.Exceptions;
+﻿using context_pkg.Exceptions;
 
 namespace pkg_context.Validations;
 

@@ -1,4 +1,4 @@
-﻿using application_pkg.Exceptions;
+﻿using context_pkg.Exceptions;
 using context_pkg.Factories.Interfaces;
 using context_pkg.Strategy.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -7,13 +7,13 @@ using pkg_context.Repositories.Interfaces;
 
 namespace context_pkg.Strategy.Strategies;
 
-public class ContextClientByPathService : IClientStrategy
+public class ClientByPathStrategy : IClientStrategy
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IPartnerRepository _partnerRepository;
     private readonly IContextFactory _contextFactory;
 
-    public ContextClientByPathService(
+    public ClientByPathStrategy(
         IHttpContextAccessor httpContextAccessor,
         IPartnerRepository partnerRepository,
         IContextFactory contextFactory)

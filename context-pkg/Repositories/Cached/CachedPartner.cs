@@ -1,4 +1,4 @@
-﻿using application_pkg.Interfaces;
+﻿using Microsoft.Extensions.Caching.Memory;
 using pkg_context.Entities;
 using pkg_context.Repositories.Interfaces;
 using pkg_context.Repositories.Repository;
@@ -8,46 +8,33 @@ namespace pkg_context.Repositories.Cached;
 public class CachedPartner : IPartnerRepository
 {
     private readonly PartnerRepository _partnerRepository;
-    private readonly ICachedService<Partner> _cachedService;
+    private readonly IMemoryCache _memoryCache;
 
-    public CachedPartner(PartnerRepository partnerRepository, ICachedService<Partner> cachedService)
+    public CachedPartner(PartnerRepository partnerRepository, IMemoryCache memoryCache)
     {
         _partnerRepository = partnerRepository;
-        _cachedService = cachedService;
+        _memoryCache = memoryCache;
     }
 
     public async Task<Partner?> GetPartnerByClientKeyAsync(Guid clientKey)
     {
-        var key = clientKey.ToString();
-        var partner = await _cachedService.GetItemAsync(key);
-
-        if (partner is null)
+        return await _memoryCache.GetOrCreateAsync(
+        clientKey,
+        cacheEntry =>
         {
-            partner = await _partnerRepository.GetPartnerByClientKeyAsync(clientKey);
-            if (partner is not null)
-            {
-                await _cachedService.SetItemAsync(key, partner);
-                return partner;
-            }
-        }
-
-        return partner;
+            cacheEntry.SlidingExpiration = TimeSpan.FromHours(1);
+            return _partnerRepository.GetPartnerByClientKeyAsync(clientKey);
+        });
     }
 
     public async Task<Partner?> GetPartnerByUrlAsync(string url)
     {
-        var partner = await _cachedService.GetItemAsync(url);
-
-        if (partner is null)
+        return await _memoryCache.GetOrCreateAsync(
+        url,
+        cacheEntry =>
         {
-            partner = await _partnerRepository.GetPartnerByUrlAsync(url);
-            if (partner is not null)
-            {
-                await _cachedService.SetItemAsync(url, partner);
-                return partner;
-            }
-        }
-
-        return partner;
+            cacheEntry.SlidingExpiration = TimeSpan.FromHours(1);
+            return _partnerRepository.GetPartnerByUrlAsync(url);
+        });
     }
 }

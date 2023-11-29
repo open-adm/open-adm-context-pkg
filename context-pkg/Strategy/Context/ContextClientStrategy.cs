@@ -1,5 +1,5 @@
-﻿using application_pkg.Exceptions;
-using context_pkg.Enum;
+﻿using context_pkg.Enum;
+using context_pkg.Exceptions;
 using context_pkg.Strategy.Interfaces;
 using context_pkg.Strategy.Strategies;
 using pkg_context.Context;
@@ -11,8 +11,8 @@ public class ContextClientStrategy : IContextClientStrategy
     private readonly IDictionary<TypeContextClient, IClientStrategy> _services;
 
     public ContextClientStrategy(
-        ContextClientByClientKeyService contextClientByClientKeyService,
-        ContextClientByPathService contextClientByPathService)
+        ClientByClientKeyStrategy contextClientByClientKeyService,
+        ClientByPathStrategy contextClientByPathService)
     {
         _services = new Dictionary<TypeContextClient, IClientStrategy>()
         {

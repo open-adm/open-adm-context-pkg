@@ -20,10 +20,11 @@ public static class ConfigureServicesContext
         services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped<IContextFactory, ContextFactory>();
         services.AddScoped<IContextClientStrategy, ContextClientStrategy>();
-        services.AddScoped<ContextClientByClientKeyService>();
-        services.AddScoped<ContextClientByPathService>();
+        services.AddScoped<ClientByClientKeyStrategy>();
+        services.AddScoped<ClientByPathStrategy>();
         services.AddScoped<PartnerRepository>();
         services.AddScoped<IPartnerRepository, CachedPartner>();
+        services.AddMemoryCache();
 
         return services;
     }
