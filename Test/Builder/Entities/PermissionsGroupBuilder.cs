@@ -8,6 +8,7 @@ public class PermissionsGroupBuilder
     private readonly bool _delete;
     private readonly bool _list;
     private Guid _userGroupId;
+    private Guid _permissionsId;
     private readonly int _number;
 
     public PermissionsGroupBuilder()
@@ -19,6 +20,7 @@ public class PermissionsGroupBuilder
         _delete = true;
         _list = true;
         _userGroupId = Guid.NewGuid();
+        _permissionsId = Guid.NewGuid();
         _number = faker.Random.Int(min: 1);
     }
     public static PermissionsGroupBuilder Init() => new();
@@ -33,5 +35,5 @@ public class PermissionsGroupBuilder
         return this;
     }
 
-    public PermissionsGroup Build() => new(_description, _create, _update, _delete, _list, _userGroupId, _number);
+    public PermissionsGroup Build() => new(_description, _create, _update, _delete, _list, _userGroupId, _number, _permissionsId);
 }
