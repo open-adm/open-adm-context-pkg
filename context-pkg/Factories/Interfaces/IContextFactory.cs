@@ -4,5 +4,5 @@ namespace context_pkg.Factories.Interfaces;
 
 public interface IContextFactory
 {
-    ClientContext CreateContextClient(byte[] stringConnectionByte);
+    ClientContext CreateContextClient(string stringConnectionByte);
 }

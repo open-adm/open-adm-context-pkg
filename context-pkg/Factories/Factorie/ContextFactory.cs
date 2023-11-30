@@ -8,9 +8,9 @@ namespace context_pkg.Factories.Factorie;
 
 public class ContextFactory : IContextFactory
 {
-    public ClientContext CreateContextClient(byte[] stringConnectionByte)
+    public ClientContext CreateContextClient(string stringConnectionByte)
     {
-        var stringConnection = CryptographyDb.DecryptString(stringConnectionByte);
+        var stringConnection = CryptographyGeneric.Decrypt(stringConnectionByte);
 
         if (string.IsNullOrWhiteSpace(stringConnection))
             throw new ExceptionCustom("String de conexão inválida para criação do contexto do cliente!");

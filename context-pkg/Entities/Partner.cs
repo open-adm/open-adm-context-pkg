@@ -15,7 +15,7 @@ public sealed class Partner : BaseEntity
         Url = url;
     }
     [JsonConstructor]
-    public Partner(string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, string url, byte[] db, Guid? addressId, Guid clientKey, bool isPremium, int number) : base(number)
+    public Partner(string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, string url, string db, Guid? addressId, Guid clientKey, bool isPremium, int number) : base(number)
     {
         RazaoSocial = razaoSocial;
         NameFantasy = nameFantasy;
@@ -36,7 +36,7 @@ public sealed class Partner : BaseEntity
         Cnpj = cnpj;
         Email = email;
         Phone = phone;
-        Db = CryptographyDb.EncryptByte(db);
+        Db = CryptographyGeneric.Encrypt(db);
         Url = string.Empty;
         ClientKey = Guid.NewGuid();
         IsPremium = false;
@@ -47,7 +47,7 @@ public sealed class Partner : BaseEntity
     public string Email { get; private set; }
     public string? Phone { get; private set; }
     public string Url { get; private set; }
-    public byte[] Db { get; private set; }
+    public string Db { get; private set; }
     public Guid? AddressId { get; private set; }
     public Address? Address { get; private set; }
     public Guid ClientKey { get; private set; }
