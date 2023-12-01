@@ -10,15 +10,11 @@ public abstract class BaseEntity
     {
         if (number <= 0) throw new ExceptionCustom("Número inválido para a entidade!");
         Number = number;
-        Created_at = DateTime.Now;
-        Update_at = DateTime.Now;
-        Active = true;
-        Id = Guid.NewGuid();
     }
 
-    public Guid Id { get; protected set; }
-    public DateTime Created_at { get; protected set; }
-    public DateTime Update_at { get; protected set; }
-    public bool Active { get; protected set; }
+    public Guid Id { get; protected set; } = Guid.NewGuid();
+    public DateTime Created_at { get; protected set; } = DateTime.Now;
+    public DateTime Update_at { get; protected set; } = DateTime.Now;
+    public bool Active { get; protected set; } = true;
     public int Number { get; protected set; }
 }
