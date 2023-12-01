@@ -8,7 +8,7 @@ public abstract class BaseEntity
     protected BaseEntity(Guid id, DateTime created_at, DateTime update_at, bool active, int number)
     {
         ValidateNumberZero.Validate(number, "É obrigatório informar um número!");
-        ValidateGuid.Validate(Id, "Id inválido!");
+        ValidateGuid.Validate(id, "Id inválido!");
         Id = id;
         Created_at = created_at;
         Update_at = update_at;
