@@ -31,6 +31,7 @@ public static class ConfigureServicesContext
 
     public static IServiceCollection InjectContext(IServiceCollection services, string stringConnection)
     {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         services.AddDbContext<OpenAdmContext>(opt => opt.UseNpgsql(stringConnection));
 
         return services;
