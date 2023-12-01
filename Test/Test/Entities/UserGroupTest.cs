@@ -14,7 +14,7 @@ public class UserGroupTest
             Number = 1
         };
 
-        var userGroup = new UserGroup(dto.QuantityMaxUser, dto.Description, dto.Number);
+        var userGroup = new UserGroup(Guid.NewGuid(), DateTime.Now, DateTime.Now, true, dto.Number, dto.QuantityMaxUser, dto.Description);
 
         dto.ToExpectedObject().ShouldMatch(userGroup);
 

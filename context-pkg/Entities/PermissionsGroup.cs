@@ -1,13 +1,13 @@
 ﻿using context_pkg.Validations;
 using pkg_context.Validations;
-using System.Text.Json.Serialization;
 
 namespace pkg_context.Entities;
 
 public sealed class PermissionsGroup : BaseEntity
 {
-    [JsonConstructor]
-    public PermissionsGroup(string description, bool create, bool update, bool delete, bool list, Guid userGroupId, int number, Guid permissionsId) : base(number)
+    public PermissionsGroup(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
+        string description, bool create, bool update, bool delete, bool list, Guid userGroupId, Guid permissionsId) 
+        : base(id, created_at, update_at, active, number)
     {
         ValidateBool.Validate(create, "Parmetros inválidos");
         ValidateBool.Validate(update, "Parmetros inválidos");
@@ -31,5 +31,5 @@ public sealed class PermissionsGroup : BaseEntity
     public bool List { get; private set; }
     public Guid UserGroupId { get; private set; }
     public Guid PermissionsId { get; private set; }
-    public UserGroup UserGroup { get; private set; } = null!;
+    public UserGroup UserGroup { get; set; } = null!;
 }

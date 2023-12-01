@@ -7,7 +7,9 @@ namespace pkg_context.Entities;
 public sealed class User : BaseEntity
 {
     [JsonConstructor]
-    public User(string email, string password, string name, bool isAdmin, bool verifiedEmail, byte[]? avatar, Guid? userGroupId, int number) : base(number)
+    public User(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
+        string email, string password, string name, bool isAdmin, bool verifiedEmail, byte[]? avatar, Guid? userGroupId) 
+        : base(id, created_at, update_at, active, number)
     {
         ValidateStringAndLength.Validate(name, 255, "Nome inválido!");
         ValidateEmailAndLength.Validate(email, 255, "Email inválido!");
@@ -24,6 +26,7 @@ public sealed class User : BaseEntity
         Avatar = avatar;
         UserGroupId = userGroupId;
     }
+
     public string Email { get; private set; }
     public string Password { get; private set; }
     public string Name { get; private set; }

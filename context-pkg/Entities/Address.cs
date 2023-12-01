@@ -1,12 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
-namespace pkg_context.Entities;
+﻿namespace pkg_context.Entities;
 
 public sealed class Address : BaseEntity
 {
-    [JsonConstructor]
-    public Address(string zipCode, string state, string city, string neighborhood, string road, int number) : base(number)
+    public Address(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
+        string zipCode, string state, string city, string neighborhood, string road) 
+        : base(id, created_at, update_at, active, number)
     {
         ZipCode = zipCode;
         State = state;
@@ -14,14 +12,10 @@ public sealed class Address : BaseEntity
         Neighborhood = neighborhood;
         Road = road;
     }
-    [MaxLength(9)]
+
     public string ZipCode { get; private set; }
-    [MaxLength(100)]
     public string State { get; private set; }
-    [MaxLength(100)]
     public string City { get; private set; }
-    [MaxLength(100)]
     public string Neighborhood { get; private set; }
-    [MaxLength(100)]
     public string Road { get; private set; }
 }

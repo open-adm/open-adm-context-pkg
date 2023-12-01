@@ -1,17 +1,14 @@
-﻿using System.Text.Json.Serialization;
-
-namespace pkg_context.Entities;
+﻿namespace pkg_context.Entities;
 
 public sealed class Menu
 {
-    [JsonConstructor]
-    public Menu(bool isPremium)
+    public Menu(Guid id, bool isPremium)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         IsPremium = isPremium;
-        Sidebar = new();
     }
-    public Guid Id { get; set; }
-    public bool IsPremium { get; set; }
-    public List<Sidebar> Sidebar { get; set; }
+
+    public Guid Id { get; private set; }
+    public bool IsPremium { get; private set; }
+    public List<Sidebar> Sidebar { get; set; } = new();
 }

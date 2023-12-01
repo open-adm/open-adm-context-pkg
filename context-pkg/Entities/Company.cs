@@ -1,23 +1,25 @@
-﻿using System.Text.Json.Serialization;
-
-namespace pkg_context.Entities;
+﻿namespace pkg_context.Entities;
 
 public sealed class Company : BaseEntity
 {
-    public void UpdateAddress(Guid addressId)
-    {
-        AddressId = addressId;
-    }
-    [JsonConstructor]
-    public Company(string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, int number) : base(number)
+    public Company(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
+        string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, Guid? addressId, bool isPremiun) 
+        : base(id, created_at, update_at, active, number)
     {
         RazaoSocial = razaoSocial;
         NameFantasy = nameFantasy;
         Cnpj = cnpj;
         Email = email;
         Phone = phone;
-        IsPremium = false;
+        AddressId = addressId;
+        IsPremium = isPremiun;
     }
+
+    public void UpdateAddress(Guid addressId)
+    {
+        AddressId = addressId;
+    }
+    
     public string RazaoSocial { get; private set; }
     public string NameFantasy { get; private set; }
     public string Cnpj { get; private set; }

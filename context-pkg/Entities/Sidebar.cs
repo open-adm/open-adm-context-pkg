@@ -1,23 +1,20 @@
-﻿using System.Text.Json.Serialization;
-
-namespace pkg_context.Entities;
+﻿namespace pkg_context.Entities;
 
 public sealed class Sidebar
 {
-    [JsonConstructor]
-    public Sidebar(string? route, string title, string? icon, int order)
+    public Sidebar(Guid id, string? route, string title, string? icon, int order)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         Route = route;
         Title = title;
         Icon = icon;
         Order = order;
-        Childrens = new();
     }
-    public Guid Id { get; set; }
-    public string? Route { get; set; }
-    public string Title { get; set; }
-    public string? Icon { get; set; }
-    public int Order { get; set; }
-    public List<ChildrensSidebar> Childrens { get; set; }
+
+    public Guid Id { get; private set; }
+    public string? Route { get; private set; }
+    public string Title { get; private set; }
+    public string? Icon { get; private set; }
+    public int Order { get; private set; }
+    public List<ChildrensSidebar> Childrens { get; set; } = new ();
 }
