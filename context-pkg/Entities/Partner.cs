@@ -22,7 +22,7 @@ public sealed class Partner : BaseEntity
         Cnpj = cnpj;
         Email = email;
         Phone = phone;
-        Db = db ?? throw new ArgumentNullException(nameof(db));
+        Db = db;
         AddressId = addressId;
         ClientKey = clientKey;
         IsPremium = isPremium;
@@ -36,7 +36,7 @@ public sealed class Partner : BaseEntity
         Cnpj = cnpj;
         Email = email;
         Phone = phone;
-        Db = CryptographyGeneric.Encrypt(db);
+        Db = db;
         Url = string.Empty;
         ClientKey = Guid.NewGuid();
         IsPremium = false;
