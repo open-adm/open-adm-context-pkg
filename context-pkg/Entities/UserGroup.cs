@@ -15,6 +15,12 @@ public sealed class UserGroup : BaseEntity
         Description = description;
     }
 
+    public void Update(int? quantityMaxUser, string description)
+    {
+        QuantityMaxUser = quantityMaxUser;
+        Description = description;
+    }
+
     public int? QuantityMaxUser { get; private set; }
     public string Description { get; private set; }
     public List<PermissionsGroup> PermissionsGroups { get; set; } = new();
