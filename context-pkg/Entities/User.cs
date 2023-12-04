@@ -17,7 +17,6 @@ public sealed class User : BaseEntity
         ValidateBool.Validate(isAdmin, "É obrigatório informar se o usuário é admin!");
         ValidateNumberZero.Validate(number, "Número inválido!");
 
-        Id = Guid.NewGuid();
         Email = email;
         Password = password;
         Name = name;
