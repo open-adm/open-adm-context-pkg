@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using context_pkg.Entities.Bases;
+using Microsoft.EntityFrameworkCore;
 using pkg_context.Entities;
 
 namespace pkg_context.Context;
@@ -10,7 +11,7 @@ public class OpenAdmContext : DbContext
     }
 
     public DbSet<Partner> Partners { get; set; }
-    public DbSet<Address> Address { get; set; }
+    public DbSet<BaseAddress> Address { get; set; }
     public DbSet<Menu> Menus { get; set; }
     public DbSet<Sidebar> Sidebars { get; set; }
     public DbSet<ChildrensSidebar> ChildrensSidebars { get; set; }

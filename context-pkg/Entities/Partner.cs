@@ -1,4 +1,6 @@
-﻿namespace pkg_context.Entities;
+﻿using context_pkg.Entities.Bases;
+
+namespace pkg_context.Entities;
 
 public sealed class Partner : BaseEntity
 {
@@ -26,7 +28,7 @@ public sealed class Partner : BaseEntity
     public string Url { get; private set; }
     public string Db { get; private set; }
     public Guid? AddressId { get; private set; }
-    public Address? Address { get; set; }
+    public BaseAddress? Address { get; set; }
     public Guid ClientKey { get; private set; }
     public bool IsPremium { get; private set; }
 

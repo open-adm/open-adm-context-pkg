@@ -1,9 +1,11 @@
-﻿namespace pkg_context.Entities;
+﻿using context_pkg.Entities.Bases;
+
+namespace pkg_context.Entities;
 
 public sealed class Company : BaseEntity
 {
     public Company(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
-        string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, Guid? addressId, bool isPremium) 
+        string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, Guid? addressId, bool isPremiun) 
         : base(id, created_at, update_at, active, number)
     {
         RazaoSocial = razaoSocial;
@@ -12,7 +14,7 @@ public sealed class Company : BaseEntity
         Email = email;
         Phone = phone;
         AddressId = addressId;
-        IsPremium = isPremium;
+        IsPremium = isPremiun;
     }
 
     public void UpdateAddress(Guid addressId)
@@ -26,6 +28,6 @@ public sealed class Company : BaseEntity
     public string Email { get; private set; }
     public string? Phone { get; private set; }
     public Guid? AddressId { get; private set; }
-    public Address? Address { get; private set; }
+    public BaseAddress? Address { get; private set; }
     public bool IsPremium { get; private set; }
 }

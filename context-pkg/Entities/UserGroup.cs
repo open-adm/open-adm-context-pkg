@@ -1,4 +1,5 @@
-﻿using pkg_context.Validations;
+﻿using context_pkg.Entities.Bases;
+using pkg_context.Validations;
 
 namespace pkg_context.Entities;
 
@@ -11,12 +12,6 @@ public sealed class UserGroup : BaseEntity
         ValidateStringAndLength.Validate(description, 255, "Informe a descrição!");
         if (quantityMaxUser != null)
             ValidateNumberZero.Validate(quantityMaxUser.Value, "Quantidade de usuários deve ser maior que zero!");
-        QuantityMaxUser = quantityMaxUser;
-        Description = description;
-    }
-
-    public void Update(int? quantityMaxUser, string description)
-    {
         QuantityMaxUser = quantityMaxUser;
         Description = description;
     }

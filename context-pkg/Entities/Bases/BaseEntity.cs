@@ -1,7 +1,7 @@
 ﻿using context_pkg.Validations;
 using pkg_context.Validations;
 
-namespace pkg_context.Entities;
+namespace context_pkg.Entities.Bases;
 
 public abstract class BaseEntity
 {
