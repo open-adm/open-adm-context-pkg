@@ -1,4 +1,5 @@
-﻿using context_pkg.Entities.Bases;
+﻿using context_pkg.Entities;
+using context_pkg.Entities.Bases;
 
 namespace pkg_context.Entities;
 
