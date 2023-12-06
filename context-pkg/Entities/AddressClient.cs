@@ -2,23 +2,17 @@
 
 namespace context_pkg.Entities;
 
-public sealed class AddressClient : BaseAddress
+public sealed class AddressClient : BaseEntity
 {
     public AddressClient(
         Guid id, 
         DateTime created_at, 
         DateTime update_at, 
         bool active, 
-        int number, 
-        string zipCode, 
-        string? state, 
-        string? city, 
-        string? neighborhood, 
-        string road, 
-        string? description,
+        int number,
         Guid clientId,
         Guid addressId) 
-        : base(id, created_at, update_at, active, number, zipCode, state, city, neighborhood, road, description)
+        : base(id, created_at, update_at, active, number)
     {
         ClientId = clientId;
         AddressId = addressId;
