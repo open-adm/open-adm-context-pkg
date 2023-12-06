@@ -21,5 +21,5 @@ public sealed class AddressClient : BaseEntity
     public Guid ClientId { get; private set; }
     public Client Client { get; set; } = null!;
     public Guid AddressId { get; private set; }
-    public BaseAddress Address { get; set; } = null!;
+    public Address Address { get; set; } = null!;
 }

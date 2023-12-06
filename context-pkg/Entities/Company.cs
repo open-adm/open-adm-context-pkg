@@ -28,6 +28,6 @@ public sealed class Company : BaseEntity
     public string Email { get; private set; }
     public string? Phone { get; private set; }
     public Guid? AddressId { get; private set; }
-    public BaseAddress? Address { get; private set; }
+    public Address? Address { get; private set; }
     public bool IsPremium { get; private set; }
 }
