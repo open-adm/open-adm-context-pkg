@@ -6,7 +6,7 @@ namespace pkg_context.Entities;
 public sealed class Company : BaseEntity
 {
     public Company(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
-        string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, Guid? addressId, bool isPremiun) 
+        string razaoSocial, string nameFantasy, string cnpj, string email, string? phone, Guid? addressId, bool isPremium) 
         : base(id, created_at, update_at, active, number)
     {
         RazaoSocial = razaoSocial;
@@ -15,7 +15,7 @@ public sealed class Company : BaseEntity
         Email = email;
         Phone = phone;
         AddressId = addressId;
-        IsPremium = isPremiun;
+        IsPremium = isPremium;
     }
 
     public void UpdateAddress(Guid addressId)

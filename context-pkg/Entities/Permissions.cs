@@ -5,11 +5,11 @@ namespace pkg_context.Entities;
 public sealed class Permissions : BaseEntity
 {
     public Permissions(Guid id, DateTime created_at, DateTime update_at, bool active, int number,
-        bool isPremium, string description) 
+        bool isPremiu, string description) 
         : base(id, created_at, update_at, active, number)
     {
         Description = description;
-        IsPremiun = isPremium;
+        IsPremiun = isPremiu;
     }
 
     public bool IsPremiun { get; private set; }
