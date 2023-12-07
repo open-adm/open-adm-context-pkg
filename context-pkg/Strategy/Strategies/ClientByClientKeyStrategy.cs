@@ -32,9 +32,9 @@ public class ClientByClientKeyStrategy : IClientStrategy
 
         if (!Guid.TryParse(clientKeyString, out Guid clientKey)) throw new Exception("clientKey inválida para criação do context do cliente!");
 
-        var partner = await _partnerRepository.GetPartnerByClientKeyAsync(clientKey)
+        var config = await _partnerRepository.GetPartnerByClientKeyAsync(clientKey)
             ?? throw new ExceptionCustom($"Erro ao lozalizar a empresa com clientKey : {clientKey}, para criar context do cliente!");
 
-        return _contextFactory.CreateContextClient(partner.ConfigPartner.Db);
+        return _contextFactory.CreateContextClient(config.Db);
     }
 }

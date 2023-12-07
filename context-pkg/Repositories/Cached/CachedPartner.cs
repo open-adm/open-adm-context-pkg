@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using pkg_context.Entities;
+﻿using context_pkg.Entities;
+using Microsoft.Extensions.Caching.Memory;
 using pkg_context.Repositories.Interfaces;
 using pkg_context.Repositories.Repository;
 
@@ -16,7 +16,7 @@ public class CachedPartner : IPartnerRepository
         _memoryCache = memoryCache;
     }
 
-    public async Task<Partner?> GetPartnerByClientKeyAsync(Guid clientKey)
+    public async Task<ConfigPartner?> GetPartnerByClientKeyAsync(Guid clientKey)
     {
         return await _memoryCache.GetOrCreateAsync(
         clientKey,
@@ -27,7 +27,7 @@ public class CachedPartner : IPartnerRepository
         });
     }
 
-    public async Task<Partner?> GetPartnerByUrlAsync(string url)
+    public async Task<ConfigPartner?> GetPartnerByUrlAsync(string url)
     {
         return await _memoryCache.GetOrCreateAsync(
         url,

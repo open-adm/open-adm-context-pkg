@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using context_pkg.Entities;
+using Microsoft.EntityFrameworkCore;
 using pkg_context.Context;
 using pkg_context.Entities;
 using pkg_context.Repositories.Interfaces;
@@ -14,21 +15,19 @@ public class PartnerRepository : IPartnerRepository
         _openAdmContext = openAdmContext;
     }
 
-    public async Task<Partner?> GetPartnerByClientKeyAsync(Guid clientKey)
+    public async Task<ConfigPartner?> GetPartnerByClientKeyAsync(Guid clientKey)
     {
         return await _openAdmContext
-            .Partners
-            .Include(x => x.ConfigPartner)
-            .FirstOrDefaultAsync(x => x.ConfigPartner.ClientKey == clientKey);
+            .ConfigPartners
+            .FirstOrDefaultAsync(x => x.ClientKey == clientKey);
     }
        
 
-    public async Task<Partner?> GetPartnerByUrlAsync(string url)
+    public async Task<ConfigPartner?> GetPartnerByUrlAsync(string url)
     {
          return await _openAdmContext
-            .Partners
-            .Include(x => x.ConfigPartner)
-            .FirstOrDefaultAsync(x => x.ConfigPartner.Url == url);
+            .ConfigPartners
+            .FirstOrDefaultAsync(x => x.Url == url);
 
     }
 

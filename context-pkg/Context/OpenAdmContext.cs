@@ -16,4 +16,5 @@ public class OpenAdmContext : DbContext
     public DbSet<Sidebar> Sidebars { get; set; }
     public DbSet<ChildrensSidebar> ChildrensSidebars { get; set; }
     public DbSet<Permissions> Permissions { get; set; }
+    public DbSet<ConfigPartner> ConfigPartners { get; set; }
 }

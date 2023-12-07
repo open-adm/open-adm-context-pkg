@@ -1,11 +1,11 @@
-﻿using pkg_context.Entities;
+﻿using context_pkg.Entities;
 
 namespace pkg_context.Repositories.Interfaces;
 
 
 public interface IPartnerRepository
 {
-    Task<Partner?> GetPartnerByUrlAsync(string url);
-    Task<Partner?> GetPartnerByClientKeyAsync(Guid clientKey);
+    Task<ConfigPartner?> GetPartnerByUrlAsync(string url);
+    Task<ConfigPartner?> GetPartnerByClientKeyAsync(Guid clientKey);
 }
 

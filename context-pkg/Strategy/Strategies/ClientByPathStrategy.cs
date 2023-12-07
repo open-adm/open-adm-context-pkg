@@ -27,9 +27,9 @@ public class ClientByPathStrategy : IClientStrategy
         var url = _httpContextAccessor?.HttpContext?.Request.Headers["Referer"].ToString()
             ?? throw new ExceptionCustom("Erro ao recuperar path base da requisição, para criar o context do cliente!");
 
-        var partner = await _partnerRepository.GetPartnerByUrlAsync(url)
+        var config = await _partnerRepository.GetPartnerByUrlAsync(url)
             ?? throw new ExceptionCustom($"Erro ao localizar a empresa com a URL : {url}, para criar o context do cliente!");
 
-        return _contextFactory.CreateContextClient(partner.ConfigPartner.Db);
+        return _contextFactory.CreateContextClient(config.Db);
     }
 }
