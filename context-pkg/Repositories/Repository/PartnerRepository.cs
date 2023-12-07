@@ -14,10 +14,22 @@ public class PartnerRepository : IPartnerRepository
         _openAdmContext = openAdmContext;
     }
 
-    public async Task<Partner?> GetPartnerByClientKeyAsync(Guid clientKey) =>
-       await _openAdmContext.Partners.FirstOrDefaultAsync(x => x.ClientKey == clientKey);
+    public async Task<Partner?> GetPartnerByClientKeyAsync(Guid clientKey)
+    {
+        return await _openAdmContext
+            .Partners
+            .Include(x => x.ConfigPartner)
+            .FirstOrDefaultAsync(x => x.ConfigPartner.ClientKey == clientKey);
+    }
+       
 
-    public async Task<Partner?> GetPartnerByUrlAsync(string url) =>
-         await _openAdmContext.Partners.FirstOrDefaultAsync(x => x.Url == url);
+    public async Task<Partner?> GetPartnerByUrlAsync(string url)
+    {
+         return await _openAdmContext
+            .Partners
+            .Include(x => x.ConfigPartner)
+            .FirstOrDefaultAsync(x => x.ConfigPartner.Url == url);
+
+    }
 
 }

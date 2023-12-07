@@ -35,6 +35,6 @@ public class ClientByClientKeyStrategy : IClientStrategy
         var partner = await _partnerRepository.GetPartnerByClientKeyAsync(clientKey)
             ?? throw new ExceptionCustom($"Erro ao lozalizar a empresa com clientKey : {clientKey}, para criar context do cliente!");
 
-        return _contextFactory.CreateContextClient(partner.Db);
+        return _contextFactory.CreateContextClient(partner.ConfigPartner.Db);
     }
 }

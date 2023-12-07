@@ -30,6 +30,6 @@ public class ClientByPathStrategy : IClientStrategy
         var partner = await _partnerRepository.GetPartnerByUrlAsync(url)
             ?? throw new ExceptionCustom($"Erro ao localizar a empresa com a URL : {url}, para criar o context do cliente!");
 
-        return _contextFactory.CreateContextClient(partner.Db);
+        return _contextFactory.CreateContextClient(partner.ConfigPartner.Db);
     }
 }
