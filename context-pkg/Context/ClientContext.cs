@@ -17,4 +17,6 @@ public class ClientContext : DbContext
     public DbSet<AddressClient> AddressClients { get; set; }
     public DbSet<UserGroup> UserGroups { get; set; }
     public DbSet<PermissionsGroup> PermissionsGroups { get; set; }
+    public DbSet<ContactUser> ContactUser { get; set; }
+    public DbSet<Contact> Contact { get; set; }
 }
