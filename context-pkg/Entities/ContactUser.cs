@@ -10,9 +10,13 @@ public sealed class ContactUser : BaseEntity
         DateTime created_at, 
         DateTime update_at, 
         bool active, 
-        int number) 
+        int number,
+        Guid userId,
+        Guid contactId) 
         : base(id, created_at, update_at, active, number)
     {
+        ContactId = contactId;
+        UserId = userId;
     }
 
     public Guid UserId { get; private set; }

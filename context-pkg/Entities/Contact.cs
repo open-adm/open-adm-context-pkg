@@ -1,23 +1,17 @@
-﻿using context_pkg.Entities.Bases;
+﻿namespace context_pkg.Entities;
 
-namespace context_pkg.Entities;
-
-public sealed class Contact : BaseEntity
+public sealed class Contact
 {
     public Contact(
-        Guid id, 
-        DateTime created_at, 
-        DateTime update_at, 
-        bool active, 
-        int number,
+        Guid id,
         string? email,
-        string? phone) 
-        : base(id, created_at, update_at, active, number)
+        string? phone)
     {
+        Id = id;
         Email = email;
         Phone = phone;
     }
-
+    public Guid Id { get; private set; }
     public string? Email { get; private set; }
     public string? Phone { get; private set; }
 }
